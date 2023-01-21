@@ -63,5 +63,11 @@ public class Lock {
         for (String string : lockLines) {
             System.out.println(string);
         }
+
+        
+    }
+
+    public boolean Unlocked(){
+        return unlocked;
     }
 }
