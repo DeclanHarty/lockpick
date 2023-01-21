@@ -44,12 +44,15 @@ public class Lock {
     }
 
     public void printLock(){
-        String[] lockLines = {"", "", ""};
+        String[] lockLines = {"", "", "", ""};
+        int iterations = 1;
 
         for(Pin pin : pins){
-            lockLines[0] += " \u2588";
-            lockLines[pin.pinSet() ? 1 : 2] += " \u2588";
-            lockLines[pin.pinSet() ? 2 : 1] += "  ";
+            lockLines[0] += (" " + iterations);
+            lockLines[1] += " \u2588";
+            lockLines[pin.pinSet() ? 2 : 3] += " \u2588";
+            lockLines[pin.pinSet() ? 3 : 2] += "  ";
+            iterations++;
 
             /*if(pin.pinSet()){
                 lockLines[1] += " \u2588";
