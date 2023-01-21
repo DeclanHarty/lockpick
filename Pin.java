@@ -17,7 +17,7 @@ public class Pin {
         if(pinUp){
             System.out.println("Pin has already been set... ");
             return false;
-        }else if(previousPin == null || previousPin.pinSet()){
+        }else if(previousPin == null  || previousPin.pinSet()){
             pinUp = true;
             System.out.println("Pin has been set... ");
             return true;

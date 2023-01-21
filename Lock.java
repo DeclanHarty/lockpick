@@ -1,26 +1,28 @@
+import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
 
 public class Lock {
-    List<Pin> pins;
+    Pin pins[];
     private static int numPins;
     private int numSetPins = 0;
     private boolean unlocked = false;
 
     public Lock(int _numPins){
         numPins = _numPins;
-
+        pins = new Pin[_numPins];
         makePins();
     }
 
     private void makePins(){
         Pin previousPin = null;
         for(int i = 0; i < numPins; i++){
-            pins.add(new Pin(previousPin));
-            previousPin = pins.get(i);
+            pins[i] = (new Pin(previousPin));
+            previousPin = pins[i];
         }
-
-        Collections.shuffle(pins);
+        List<Pin> pinsList = Arrays.asList(pins); 
+        Collections.shuffle(pinsList);
+        pinsList.toArray(pins);
     }
 
     public void pickPin(int index){
@@ -28,7 +30,7 @@ public class Lock {
             System.out.println("Lock has already been picked... ");
             return;
         }
-        if(pins.get(index).setPin()){
+        if(pins[index].setPin()){
             numSetPins++;
             checkIfUnlocked();
         }
@@ -46,13 +48,16 @@ public class Lock {
 
         for(Pin pin : pins){
             lockLines[0] += " \u2588";
-            if(pin.pinSet()){
+            lockLines[pin.pinSet() ? 1 : 2] += " \u2588";
+            lockLines[pin.pinSet() ? 2 : 1] += "  ";
+
+            /*if(pin.pinSet()){
                 lockLines[1] += " \u2588";
                 lockLines[2] += "  ";
             }else{
-                lockLines[2] += "  ";
-                lockLines[1] += " \u2588";
-            }
+                lockLines[1] += "  ";
+                lockLines[2] += " \u2588";
+            }*/
         }
 
         for (String string : lockLines) {
