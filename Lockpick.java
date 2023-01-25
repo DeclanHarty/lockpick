@@ -95,6 +95,17 @@ public class Lockpick {
     }
 
     private static void playAgain(){
-
+        while(true){
+            System.out.print("Do you want to play again? (y/n) ");
+            String input = scanner.nextLine();
+            if (input.toUpperCase().equals("Y")){
+                pickLock();
+            }else if(input.toUpperCase().equals("N")){
+                break;
+            }else{
+                System.out.println("Please enter a valid command...");
+                continue;
+            }
+        }
     }
 }
