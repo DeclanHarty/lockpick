@@ -2,8 +2,8 @@ public class Pin {
     Pin previousPin;
     private boolean pinUp = false;
 
-    public Pin(Pin previous_pin){
-        previousPin = previous_pin;
+    public Pin(Pin previousPin){
+        this.previousPin = previousPin;
     }
 
     // Pin Bool Accesser

@@ -8,9 +8,9 @@ public class Lock {
     private int numSetPins = 0;
     private boolean unlocked = false;
 
-    public Lock(int _numPins){
-        numPins = _numPins;
-        pins = new Pin[_numPins];
+    public Lock(int numPins){
+        this.numPins = numPins;
+        pins = new Pin[numPins];
         makePins();
     }
 
