@@ -30,6 +30,7 @@ public class Lockpick {
         scanner.close();
     }
 
+    // Help PrintOut
     private static void help(){
         System.out.println("Lockpicking Simulator");
         System.out.println("lp - Starts lockpick simulation");
@@ -38,6 +39,7 @@ public class Lockpick {
         System.out.println("help - brings this prompt back up");
     }
 
+    // Lockpicking Game Loop
     private static void pickLock(){
         int index;
 
@@ -71,6 +73,7 @@ public class Lockpick {
         }
     }
 
+    // How to Play Printout
     private static void howToPlay(){
         System.out.println("How to Play");
         System.out.println("Locks consist of multiple pins that must be pushed up in to unlock the lock");
