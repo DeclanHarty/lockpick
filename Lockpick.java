@@ -42,7 +42,9 @@ public class Lockpick {
         int index;
 
         System.out.print("How many pins do you want the lock be? ");
-        int numOfPins = scanner.nextInt();
+        String pinInput = scanner.nextLine();
+        int numOfPins = Integer.parseInt(pinInput);
+
         Lock lock = new Lock(numOfPins);
         while(!(lock.Unlocked())){
             lock.printLock();
