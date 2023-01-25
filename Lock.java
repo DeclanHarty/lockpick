@@ -4,7 +4,7 @@ import java.util.Collections;
 
 public class Lock {
     Pin pins[];
-    private static int numPins;
+    public int numPins;
     private int numSetPins = 0;
     private boolean unlocked = false;
 

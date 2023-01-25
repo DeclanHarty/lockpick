@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
+
 
 public class Lockpick {
     static Scanner scanner = new Scanner(System.in);
@@ -39,6 +39,8 @@ public class Lockpick {
     }
 
     private static void pickLock(){
+        int index;
+
         System.out.print("How many pins do you want the lock be? ");
         int numOfPins = scanner.nextInt();
         Lock lock = new Lock(numOfPins);
@@ -50,6 +52,21 @@ public class Lockpick {
                 if(quit()){
                     break;
                 }
+            }else{
+                try{
+                    index = Integer.parseInt(input) - 1; 
+                }catch(java.lang.NumberFormatException e){
+                    System.out.println("Please input a valid index");
+                    continue;
+                }
+
+                if(index < lock.numPins && index >= 0){
+                    lock.pickPin(index);
+                }else{
+                    System.out.println("Please input a valid index");
+                    continue;
+                }
+                
             }
         }
     }
