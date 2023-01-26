@@ -11,7 +11,6 @@ public class Lockpick {
             String input = scanner.nextLine();
             if(input.equals("lp")){
                 pickLock();
-                playAgain();
             }else if(input.equals("htp")){
                 howToPlay();
             }else if(input.equals("quit")){
@@ -30,6 +29,7 @@ public class Lockpick {
         scanner.close();
     }
 
+    // Help PrintOut
     private static void help(){
         System.out.println("Lockpicking Simulator");
         System.out.println("lp - Starts lockpick simulation");
@@ -38,12 +38,19 @@ public class Lockpick {
         System.out.println("help - brings this prompt back up");
     }
 
+    // Lockpicking Game Loop
     private static void pickLock(){
         int index;
+        int numOfPins = 0;
 
-        System.out.print("How many pins do you want the lock be? ");
-        String pinInput = scanner.nextLine();
-        int numOfPins = Integer.parseInt(pinInput);
+        try{
+            System.out.print("How many pins do you want the lock be? ");
+            String pinInput = scanner.nextLine();
+            numOfPins = Integer.parseInt(pinInput);
+        }catch(java.lang.NumberFormatException e){
+            System.out.println("Please enter a valid integer");
+            pickLock();
+        }
 
         Lock lock = new Lock(numOfPins);
         while(!(lock.Unlocked())){
@@ -52,7 +59,7 @@ public class Lockpick {
             String input = scanner.nextLine();
             if(input.equals("quit")){
                 if(quit()){
-                    break;
+                    return;
                 }
             }else{
                 try{
@@ -68,11 +75,14 @@ public class Lockpick {
                     System.out.println("Please input a valid index");
                     continue;
                 }
+
+                playAgain();
                 
             }
         }
     }
 
+    // How to Play Printout
     private static void howToPlay(){
         System.out.println("How to Play");
         System.out.println("Locks consist of multiple pins that must be pushed up in order to unlock the lock");
