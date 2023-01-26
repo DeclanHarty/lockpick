@@ -75,7 +75,7 @@ public class Lockpick {
 
     private static void howToPlay(){
         System.out.println("How to Play");
-        System.out.println("Locks consist of multiple pins that must be pushed up in to unlock the lock");
+        System.out.println("Locks consist of multiple pins that must be pushed up in order to unlock the lock");
         System.out.println("The pins must be set in a specific and randomized order");
         System.out.println("You can choose an index to test the pin of that index");
         System.out.println("Once all pins have been set the lock has now been opened");
